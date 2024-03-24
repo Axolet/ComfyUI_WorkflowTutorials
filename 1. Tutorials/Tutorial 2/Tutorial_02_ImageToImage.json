@@ -1,0 +1,1123 @@
+{
+  "last_node_id": 593,
+  "last_link_id": 924,
+  "nodes": [
+    {
+      "id": 549,
+      "type": "Reroute",
+      "pos": [
+        560.5864491834761,
+        190.13868538968836
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 877
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            880
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "VAE",
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 548,
+      "type": "Reroute",
+      "pos": [
+        220.58644918347602,
+        340.1386853896885
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 879
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            876
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 332,
+      "type": "VAEDecode",
+      "pos": [
+        1440.293228149414,
+        309.56934356689453
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 667,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 881,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            874
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 542,
+      "type": "SaveImage",
+      "pos": [
+        1770.293228149414,
+        309.56934356689453
+      ],
+      "size": {
+        "0": 550.5032958984375,
+        "1": 596.7999267578125
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 874
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 330,
+      "type": "CLIPTextEncode",
+      "pos": [
+        250.58644918347613,
+        786.1386853896886
+      ],
+      "size": {
+        "0": 401.5670166015625,
+        "1": 98.48851013183594
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 585,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            584
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark, lowres, blurry, cropped, ugly"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 567,
+      "type": "Reroute",
+      "pos": [
+        381.87214007134446,
+        1157.569204290962
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 898
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            895
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 554,
+      "type": "Note",
+      "pos": [
+        -224,
+        831
+      ],
+      "size": [
+        328.2786269135315,
+        129.7291997385887
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Load Image:\n\n- This node loads an existing image that you want to use as the starting point for the Img2Img process.\n\n- Upload the image womanSittingOnRock.jpg that is included in the Workflow Folder"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 550,
+      "type": "Reroute",
+      "pos": [
+        1168,
+        190
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 880
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            881
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 326,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -239.41355081652404,
+        410.1386853896886
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            879
+          ],
+          "shape": 3,
+          "label": "MODEL",
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            582,
+            585
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            877,
+            897
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors"
+      ]
+    },
+    {
+      "id": 570,
+      "type": "Reroute",
+      "pos": [
+        112,
+        810
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 897,
+          "pos": [
+            37.5,
+            0
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            898
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": true
+      }
+    },
+    {
+      "id": 566,
+      "type": "ImageScale",
+      "pos": [
+        562,
+        1007
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 900
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 888,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 889,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            890
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        512,
+        512,
+        "disabled"
+      ]
+    },
+    {
+      "id": 558,
+      "type": "LoadImage",
+      "pos": [
+        -223,
+        875
+      ],
+      "size": {
+        "0": 315,
+        "1": 314.0000305175781
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            886,
+            899
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "label": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "womanSittingOnRock.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 571,
+      "type": "Reroute",
+      "pos": [
+        270,
+        962
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 899
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            900
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 565,
+      "type": "CM_NearestSDXLResolution",
+      "pos": [
+        254,
+        1028
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 886
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            888
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            889
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CM_NearestSDXLResolution"
+      }
+    },
+    {
+      "id": 568,
+      "type": "Reroute",
+      "pos": [
+        774,
+        1160
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 895
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            896
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 560,
+      "type": "VAEEncode",
+      "pos": [
+        946,
+        1012
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 890,
+          "label": "pixels"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 896,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            884
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 569,
+      "type": "Note",
+      "pos": [
+        953,
+        968
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "VAE Encode:\n\n- The VAE Encode node takes the loaded image and encodes it into the latent space using the Variational Autoencoder (VAE).\n\n- This step is necessary to convert the image into a format that the Stable Diffusion model can work with."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 555,
+      "type": "Note",
+      "pos": [
+        1011,
+        271
+      ],
+      "size": [
+        328.65568969233937,
+        193.52987806709393
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "KSampler:\n- Set the Denoiser to a lower value such as 0.65\n- Higher values will change the image more. (A value of 1.0 changes the image completely!)\n\n- Trying experimenting with these values: (0.5, 0.65, 0.8)"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 328,
+      "type": "CLIPTextEncode",
+      "pos": [
+        250.29322814941406,
+        545.5693435668945
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 582,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            583
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "by Yoji Shinkawa and Élisabeth Vigée Le Brun, beautiful maiden, blue silk dress, sitting on rock, fantasy mauntains, (ultra detailed:1.3), (detailed background:1.3), foreground details, depth, atmospheric, volumetric fog, light rays, light snowing, falling snow, artistic composition, cinematic lighting, masterpiece"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 325,
+      "type": "KSampler",
+      "pos": [
+        1010,
+        310
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 876,
+          "label": "model",
+          "slot_index": 0
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 583,
+          "label": "positive"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 584,
+          "label": "negative"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 885,
+          "label": "latent_image",
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            667
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        131718109460254,
+        "randomize",
+        25,
+        6,
+        "dpmpp_2m",
+        "karras",
+        0.65
+      ]
+    },
+    {
+      "id": 557,
+      "type": "Note",
+      "pos": [
+        1770,
+        270
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Results:\n\n- As the denoise is increased, the image follows the prompt more accurately, but begins to deviate more and more from the original image input\n"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 541,
+      "type": "Note",
+      "pos": [
+        -247.11545476457854,
+        -157.8267994097466
+      ],
+      "size": {
+        "0": 403.5028076171875,
+        "1": 153.08242797851562
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "title": "Tutorial 2",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "In this tutorial, we'll explore the Image-to-Image (Img2Img) generation process using ComfyUI. Img2Img allows you to use an existing image as a starting point and modify it based on a text prompt. This technique is particularly useful for editing images, applying styles, or creating variations of an existing image."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 561,
+      "type": "RepeatLatentBatch",
+      "pos": [
+        1208,
+        1010
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 884
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            885
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RepeatLatentBatch"
+      },
+      "widgets_values": [
+        4
+      ]
+    }
+  ],
+  "links": [
+    [
+      582,
+      326,
+      1,
+      328,
+      0,
+      "CLIP"
+    ],
+    [
+      583,
+      328,
+      0,
+      325,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      584,
+      330,
+      0,
+      325,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      585,
+      326,
+      1,
+      330,
+      0,
+      "CLIP"
+    ],
+    [
+      667,
+      325,
+      0,
+      332,
+      0,
+      "LATENT"
+    ],
+    [
+      874,
+      332,
+      0,
+      542,
+      0,
+      "IMAGE"
+    ],
+    [
+      876,
+      548,
+      0,
+      325,
+      0,
+      "MODEL"
+    ],
+    [
+      877,
+      326,
+      2,
+      549,
+      0,
+      "*"
+    ],
+    [
+      879,
+      326,
+      0,
+      548,
+      0,
+      "*"
+    ],
+    [
+      880,
+      549,
+      0,
+      550,
+      0,
+      "*"
+    ],
+    [
+      881,
+      550,
+      0,
+      332,
+      1,
+      "VAE"
+    ],
+    [
+      884,
+      560,
+      0,
+      561,
+      0,
+      "LATENT"
+    ],
+    [
+      885,
+      561,
+      0,
+      325,
+      3,
+      "LATENT"
+    ],
+    [
+      886,
+      558,
+      0,
+      565,
+      0,
+      "IMAGE"
+    ],
+    [
+      888,
+      565,
+      0,
+      566,
+      1,
+      "INT"
+    ],
+    [
+      889,
+      565,
+      1,
+      566,
+      2,
+      "INT"
+    ],
+    [
+      890,
+      566,
+      0,
+      560,
+      0,
+      "IMAGE"
+    ],
+    [
+      895,
+      567,
+      0,
+      568,
+      0,
+      "*"
+    ],
+    [
+      896,
+      568,
+      0,
+      560,
+      1,
+      "VAE"
+    ],
+    [
+      897,
+      326,
+      2,
+      570,
+      0,
+      "*"
+    ],
+    [
+      898,
+      570,
+      0,
+      567,
+      0,
+      "*"
+    ],
+    [
+      899,
+      558,
+      0,
+      571,
+      0,
+      "*"
+    ],
+    [
+      900,
+      571,
+      0,
+      566,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Tutorial 2: Image to Image",
+      "bounding": [
+        -249,
+        36,
+        2580,
+        1162
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Introduction",
+      "bounding": [
+        -257,
+        -232,
+        424,
+        237
+      ],
+      "color": "#a1309b",
+      "font_size": 24
+    },
+    {
+      "title": "Scale Images to a suitable SDXL resolution automatically!",
+      "bounding": [
+        247,
+        916,
+        627,
+        229
+      ],
+      "color": "#8AA",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

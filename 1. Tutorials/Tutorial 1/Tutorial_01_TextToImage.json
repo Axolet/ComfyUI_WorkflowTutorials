@@ -1,0 +1,857 @@
+{
+  "last_node_id": 557,
+  "last_link_id": 881,
+  "nodes": [
+    {
+      "id": 541,
+      "type": "Note",
+      "pos": [
+        -233.385159563522,
+        -872.5693493229587
+      ],
+      "size": {
+        "0": 403.5028076171875,
+        "1": 153.08242797851562
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "1. Welcome!",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Welcome to the exciting world of AI-assisted art generation with ComfyUI and Stable Diffusion! \n\nIn this series of tutorials, we'll explore the powerful features of ComfyUI and learn how to harness them to create stunning artwork. Whether you're a digital artist, a game designer, or simply someone who loves to experiment with creative tools, these tutorials will provide you with the knowledge and skills to leverage the potential of AI in your artistic process."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 543,
+      "type": "Note",
+      "pos": [
+        -233,
+        -659
+      ],
+      "size": {
+        "0": 400.60919189453125,
+        "1": 217.77456665039062
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "title": "2. Your Journey",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Throughout this journey, we'll dive into 5 key features of ComfyUI: \n1. Text-to-Image\n2. Image-to-Image (Generate an image that looks like another image)\n3. InPainting (Generate art over a specific part of an image)\n4. ControlNet Plugins (Powerful features such as generating characters with a specific pose!)\n5. Upscaling. (Increase the final resolution and quality of the image)\n\nEach tutorial will focus on one of these features, providing step-by-step guidance and practical examples to help you master the tools at your disposal. By the end of this series, you'll be able to combine these techniques to create a unique, character-focused artwork that showcases your newfound skills."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 544,
+      "type": "Note",
+      "pos": [
+        -231,
+        -394
+      ],
+      "size": {
+        "0": 398.31805419921875,
+        "1": 160.44728088378906
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "title": "3. Tutorial One",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "In this first tutorial, we'll start with the fundamental concept of Text-to-Image Generation. This powerful feature allows you to bring your creative ideas to life by generating images from simple text prompts. You'll learn how to craft effective prompts that guide the AI to produce the desired visual style and content. We'll also explore the various parameters and settings available in ComfyUI, giving you control over the quality and characteristics of the generated images."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 545,
+      "type": "Note",
+      "pos": [
+        -226,
+        -187
+      ],
+      "size": {
+        "0": 397.47900390625,
+        "1": 181.18727111816406
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "title": "4. What is ComfyUI?",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "But before we dive in, let's take a moment to familiarize ourselves with the ComfyUI interface. ComfyUI is a node-based system, where each node represents a specific function or operation. By connecting these nodes together, you can create custom workflows tailored to your specific needs. The interface may seem intimidating at first, but don't worry – we'll break it down step by step, and you'll soon find yourself navigating it with ease."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 549,
+      "type": "Reroute",
+      "pos": [
+        560.2932210340621,
+        190.56934182279383
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 877
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            880
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "VAE",
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 550,
+      "type": "Reroute",
+      "pos": [
+        930.2932210340621,
+        190.56934182279383
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 880
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            881
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 548,
+      "type": "Reroute",
+      "pos": [
+        220.29322103406196,
+        340.56934182279394
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 879
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            876
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 326,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -239.7067789659381,
+        410.56934182279406
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            879
+          ],
+          "shape": 3,
+          "label": "MODEL",
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            582,
+            585
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            877
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors"
+      ]
+    },
+    {
+      "id": 546,
+      "type": "Note",
+      "pos": [
+        -239.7067789659381,
+        110.56934182279372
+      ],
+      "size": {
+        "0": 293.8418884277344,
+        "1": 125.10494232177734
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "How do I view tips?",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "All \"tips\" are purple-coloured nodes.\nTo reveal (or hide) a tip, right click the node and select \"collapse\". \nYou can scroll through tips with your mouse scroll-wheel while hovering above a node.\n\n\n\n\n\n\n(You did it!)"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 332,
+      "type": "VAEDecode",
+      "pos": [
+        1188.2932210340616,
+        340.56934182279394
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 667,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 881,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            874
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 542,
+      "type": "SaveImage",
+      "pos": [
+        1519.2932210340616,
+        340.56934182279394
+      ],
+      "size": {
+        "0": 550.5032958984375,
+        "1": 596.7999267578125
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 874
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 552,
+      "type": "Note",
+      "pos": [
+        254,
+        505
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "CLIP Text Encode (Prompt):\n- You'll see two CLIP Text Encode nodes: one for the positive prompt (what you want in the image) and one for the negative prompt (what you don't want).\n\n- Enter your desired prompts in the respective nodes.\n\n- Example positive prompt: \"a majestic mountain landscape with a serene lake\"\n\n- Example negative prompt: \"blurry, low quality, ugly, deformed\""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 547,
+      "type": "Note",
+      "pos": [
+        -239,
+        363
+      ],
+      "size": {
+        "0": 370.1626281738281,
+        "1": 167.44801330566406
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Load Checkpoint:\n- This node loads the Stable Diffusion model checkpoint.\n- Select the model you want to use from the dropdown menu. \n- sd_xl_base_1.0 is the base (official) model for Stable Diffusion XL)\n\n- The model consists of three parts: MODEL (the main model), CLIP (for processing text prompts), and VAE (for encoding/decoding images to/from latent-space)."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 328,
+      "type": "CLIPTextEncode",
+      "pos": [
+        250,
+        546
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 582,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            583
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "by Yoji Shinkawa and Élisabeth Vigée Le Brun, hyper realistic full view photo of a (werewolf hunting in the dark:1.1), (spiritual , red , cacophonic , spiritual , masterful:1.4), bold lines, hyper detailed, award winning, limited color palette, high contrast, depth of field, (intricate details, masterpiece, best quality:1.4) dramatic cinematic lighting, film grain, looking at viewer, dynamic pose, wide angle panoramic view, full body view"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 330,
+      "type": "CLIPTextEncode",
+      "pos": [
+        250.29322103406207,
+        786.5693418227941
+      ],
+      "size": {
+        "0": 401.5670166015625,
+        "1": 98.48851013183594
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 585,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            584
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark, lowres, blurry, cropped, ugly"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 555,
+      "type": "Note",
+      "pos": [
+        757,
+        293
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "KSampler:\n- The KSampler node is responsible for the actual image generation process, using the specified model and prompts.\n\n- Seed: A random number that determines the initial noise pattern. Use the same seed to reproduce an image, or keep it randomized (recommended)\n\n- Steps: The number of diffusion steps to perform. Higher values generally produce better quality images but take longer to generate. (This setting differs from model to model. I reccomend starting at 25 steps and adjusting from there.)\n\n- CFG Scale: Controls the balance between following the prompts and allowing for creativity. Higher values adhere more closely to the prompts, but causes the image to become more saturated and may lower the quality of the output. Reccomended starting value for base SDXL is 6-8. \nAgain, this value differs from model to model.\n\n\n- Sampler: Samplers are methods that perform the denoising steps in Stable Diffusion, a technique that generates realistic images from text prompts. Samplers add and subtract noise from the latent image, which is a hidden representation that contains the information for the final image. Different samplers have different effects on the speed, quality, and diversity of the image generation process. \n\nI recommend starting with \"dpmpp_2m\".\n\n\n- Schedulers : The sampling method to use (e.g., Euler a, DPM2, DDIM). Different samplers can produce slightly different results.\n\nI recommend starting with \"Karras\".\n\n\n- Denoise: Denoising Strength can range from 0 to 1. A value of 0 means no noise is added, so the output image will be exactly the same as the input image. A value of 1 means the input image is completely replaced by noise, so the output image will have nothing to do with the input image. A value between 0 and 1 means some noise is added, so the output image will be influenced by the input image, but not entirely. \n\nSince we are working with an \"Empty Latent Image\", we will need to set the Denoise strength to 1. In the next tutorial, we will experiment with different values."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 325,
+      "type": "KSampler",
+      "pos": [
+        760.2932210340621,
+        340.56934182279394
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 876,
+          "label": "model",
+          "slot_index": 0
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 583,
+          "label": "positive"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 584,
+          "label": "negative"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 586,
+          "label": "latent_image",
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            667
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        342419588857968,
+        "randomize",
+        25,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 556,
+      "type": "Note",
+      "pos": [
+        1188,
+        305
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Now that we have our processed Latent Image, this node takes the generated latent image and decodes it into a viewable image using the VAE (Variational Autoencoder)."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 331,
+      "type": "EmptyLatentImage",
+      "pos": [
+        293,
+        1005
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            586
+          ],
+          "shape": 3,
+          "label": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        1152,
+        4
+      ]
+    },
+    {
+      "id": 554,
+      "type": "Note",
+      "pos": [
+        302,
+        964
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Empty Latent Image:\n- This node creates a blank latent image, which serves as the starting point for the image generation process.\n\n- Set the desired width and height of the output image (e.g., 1024 for a 1024x1024 image).\n\n- Highly Reccomended to set resolutions specific to each model. For the base SDXL model, reccomended resolutions include: (1024x1024), (1152x768), (768, 1152)\n\n- Higher Resolutions \n\n- The \"batch size\" setting determines the number of images to generate in parallel. (Eg, 4 images at once)"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 557,
+      "type": "Note",
+      "pos": [
+        1522,
+        298
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Save Image:\n\n- Congratulations! The Save Image node saves the generated image to a specified location.\n\nTo view the saved image:\n\n1. Go to the Pinokio app\n2. Click Files\n3. Click view folder\n4. Click comfyui.git\n5. Click app (Important! This is where you will install custom models in the future!)\n6. Click output. (All of your outputs are automatically stored here.\n\n\nAlternatively, you can right-click and image and choose \"Save Image\" to download the image into your browser. \n\n\n\n"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 553,
+      "type": "Note",
+      "pos": [
+        365,
+        503
+      ],
+      "size": {
+        "0": 369.8851623535156,
+        "1": 167.30392456054688
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "title": "Extra Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Tips for writing good prompts:\n\n- Specify the style. Is it digital art? A realistic photograph? \n\n- Specific the camera angle (Close up, Medium shot, Wide shot, etc)\n\n- Use artist names (Preferbly, combine multiple artist names to create a blend of different styles!)\n\n- Use flowery words such as cinematic, dynamic pose, hyper detailed, award winning, etc. \n\n- Keep prompts MINIMAL! More doesn't always mean better. Try experimenting with different prompt lengths.\n\n- You can emphasise words or phrases by highlighting them, hold ctrl, and press up or down! For example:\n\n(red scarf:1.3)\nMan wearing a blue shirt and a (yellow hat:0.8)\n\n1.0 is default, while higher values add more emphasis, and lower values does the opposite. Try to avoid using this feature unless certain keywords aren't appearing in your image, or appear too much!\n"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      582,
+      326,
+      1,
+      328,
+      0,
+      "CLIP"
+    ],
+    [
+      583,
+      328,
+      0,
+      325,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      584,
+      330,
+      0,
+      325,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      585,
+      326,
+      1,
+      330,
+      0,
+      "CLIP"
+    ],
+    [
+      586,
+      331,
+      0,
+      325,
+      3,
+      "LATENT"
+    ],
+    [
+      667,
+      325,
+      0,
+      332,
+      0,
+      "LATENT"
+    ],
+    [
+      874,
+      332,
+      0,
+      542,
+      0,
+      "IMAGE"
+    ],
+    [
+      876,
+      548,
+      0,
+      325,
+      0,
+      "MODEL"
+    ],
+    [
+      877,
+      326,
+      2,
+      549,
+      0,
+      "*"
+    ],
+    [
+      879,
+      326,
+      0,
+      548,
+      0,
+      "*"
+    ],
+    [
+      880,
+      549,
+      0,
+      550,
+      0,
+      "*"
+    ],
+    [
+      881,
+      550,
+      0,
+      332,
+      1,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Basic Txt2Img",
+      "bounding": [
+        -250,
+        37,
+        2330,
+        1153
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Introduction",
+      "bounding": [
+        -243,
+        -947,
+        425,
+        951
+      ],
+      "color": "#a1309b",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

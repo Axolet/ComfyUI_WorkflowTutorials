@@ -1,0 +1,40 @@
+Installing Pinokio and ComfyUI
+
+Prerequisites:
+- A computer running Windows, macOS, or Linux
+- Internet connection
+
+Step 1: Download and Install Pinokio
+- Go to the Pinokio website: https://pinokio.computer/
+- Click on the "Download" button to download the Pinokio installer for your operating system.
+- Once the download is complete, run the installer and follow the installation wizard to install Pinokio on your computer.
+
+Step 2: Start Pinokio
+- After the installation is complete, launch Pinokio from your desktop or application menu.
+- Wait for Pinokio to start up. This may take a few moments.
+
+Step 3: Install ComfyUI
+- In the Pinokio interface, locate the search bar.
+- Type "ComfyUI" into the search bar and press Enter.
+- From the search results, find "ComfyUI" and click on the "Install" button next to it.
+- The installation process will begin. Please note that this may take some time, depending on your internet connection speed and computer specifications.
+- Once the installation is complete, you will see a "Start" button next to ComfyUI.
+
+Step 4: Start ComfyUI
+- Click on the "Start" button next to ComfyUI in the Pinokio interface.
+- Pinokio will now start ComfyUI. This process may take a while, so please be patient.
+- Once ComfyUI is ready, you will see a message in the Pinokio interface indicating that ComfyUI has started.
+
+Step 5: Access ComfyUI in Your Web Browser
+- In the left tab of the Pinokio interface, you will see a button labeled "Wifi Local Sharing". Click on this button.
+- Pinokio will open ComfyUI in your default web browser.
+- You can now interact with ComfyUI through your web browser and start using its features.
+
+Step 6: Closing ComfyUI
+- When you're done using ComfyUI and want to close it, go back to the Pinokio interface.
+- In the Terminal tab, you will see a "Stop" button. Click on this button to stop ComfyUI.
+- ComfyUI will now shut down, and you can close the web browser tab.
+
+That's it! You have successfully installed Pinokio and ComfyUI on your computer. You can now use ComfyUI to explore and experiment with AI-powered image generation and manipulation.
+
+Note: If you encounter any issues during the installation or usage of Pinokio or ComfyUI, please refer to their respective documentation or seek help from the Pinokio and ComfyUI communities.
