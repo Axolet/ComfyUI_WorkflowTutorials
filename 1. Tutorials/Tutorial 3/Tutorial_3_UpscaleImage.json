@@ -1,0 +1,1259 @@
+{
+  "last_node_id": 618,
+  "last_link_id": 972,
+  "nodes": [
+    {
+      "id": 541,
+      "type": "Note",
+      "pos": [
+        -232.70811446028694,
+        -459.18870992468334
+      ],
+      "size": {
+        "0": 405.61199951171875,
+        "1": 91.81360626220703
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "1. Welcome!",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "In this tutorial, we'll dive into the world of image upscaling using ComfyUI. Image upscaling is the process of increasing the resolution and enhancing the details of an image. This is particularly useful when you want to generate high-quality, large-sized images from lower-resolution outputs."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 577,
+      "type": "Note",
+      "pos": [
+        -228.3999969482422,
+        -83.8000854492188
+      ],
+      "size": {
+        "0": 393.9476318359375,
+        "1": 191.9873809814453
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "title": "3. Image to Image upscale!",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "You can also use image to image to upscale an image!\n\nFor example:\n\n1. Use a lower resolution image as an image input\n2. Scale up the image to a slightly higher resolution (eg. 50% larger)\n3. Use Img to Imge process with a low denoise percent (such as 50%)\n4. The blurry input image has been upscaled with new detailed added! \n\n\nYou can combine both image upscale models (such as 4x-Ultrasharp) and Img to Img for maximum effect. We'll be performing this process in the tutorial below."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 576,
+      "type": "Note",
+      "pos": [
+        -230.3999969482422,
+        -319.80008544921867
+      ],
+      "size": {
+        "0": 393.9476318359375,
+        "1": 191.9873809814453
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "title": "2. What Are Image Upscalers?",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Image upscalers are machine learning models trained to increase the resolution and improve the visual quality of images. They use advanced algorithms to intelligently add pixels and enhance details, resulting in higher-resolution images that maintain sharpness and clarity.\n\nPopular image upscalers:\n\n1. 4x-UltraSharp: \nThis upscaler is designed to increase the resolution of images by 4 times while preserving fine details and edges. It is particularly effective for upscaling anime-style artwork, illustrations, and images with clear lines and shapes.\n\n\n2. RealESRGAN_x4\nIt is trained on a large dataset of real-world images, making it suitable for upscaling a wide range of image types, including photographs, landscapes, and portraits."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 547,
+      "type": "Note",
+      "pos": [
+        1832.1324022499998,
+        222.50658688281263
+      ],
+      "size": {
+        "0": 247.26251220703125,
+        "1": 218.38328552246094
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Missing the model?\n\nUse the manager to download the models within ComfyUI!\n\n1. Click Manager\n2. Install Models\n3. Search for  4x-UltraSharp\n4. Install\n5. Repeat for RealESRGAN_x4\n6. Go back to the workflow screen. \n7. Click Refresh (the button above the manager button)\n"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 579,
+      "type": "Note",
+      "pos": [
+        1433,
+        572
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 4,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "We start with the base image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 331,
+      "type": "EmptyLatentImage",
+      "pos": [
+        301,
+        797
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            586
+          ],
+          "shape": 3,
+          "label": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 325,
+      "type": "KSampler",
+      "pos": [
+        804,
+        347
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 961,
+          "label": "model",
+          "slot_index": 0
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 583,
+          "label": "positive"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 584,
+          "label": "negative"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 586,
+          "label": "latent_image",
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            667
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        285776049244692,
+        "randomize",
+        25,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 332,
+      "type": "VAEDecode",
+      "pos": [
+        1206,
+        351
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 667,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 881,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            882,
+            962
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 558,
+      "type": "PreviewImage",
+      "pos": [
+        1486,
+        668
+      ],
+      "size": {
+        "0": 271.47967529296875,
+        "1": 246
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 882
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 580,
+      "type": "Note",
+      "pos": [
+        2481,
+        666.2532958984375
+      ],
+      "size": {
+        "0": 375.8536071777344,
+        "1": 252.8896484375
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "The image is now upscaled with the upscale model (hopefully, you choOSE RealESRGAN_x4 due to the image's more realistic style.)\n\nNote that the upscaler made the image clearer - but also emphasised the flaws of the image!\nZoom in close to the image (such as the eyes or distant objects) and you may find strange looking proportions or incorrect details.\n\nWe will attempt to fix this using \"image to image\"!"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 565,
+      "type": "KSampler",
+      "pos": [
+        3122.828062640625,
+        391.2074982832032
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 964,
+          "slot_index": 0
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 913,
+          "slot_index": 1
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 914,
+          "slot_index": 2
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 895,
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            897
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        209567221007355,
+        "randomize",
+        30,
+        7,
+        "dpmpp_2m",
+        "karras",
+        0.55
+      ]
+    },
+    {
+      "id": 567,
+      "type": "VAEDecode",
+      "pos": [
+        3489.828062640625,
+        683.2074982832033
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 897
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 972
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            896
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 330,
+      "type": "CLIPTextEncode",
+      "pos": [
+        222,
+        621
+      ],
+      "size": {
+        "0": 401.5670166015625,
+        "1": 98.48851013183594
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 585,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            584,
+            914
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark, lowres, blurry, cropped, ugly"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 328,
+      "type": "CLIPTextEncode",
+      "pos": [
+        218,
+        353
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 582,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            583,
+            913
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "masterpiece HDR victorian portrait painting of woman, blonde hair, mountain nature, blue sky\n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 570,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        2194,
+        322.2532958984375
+      ],
+      "size": {
+        "0": 226.8000030517578,
+        "1": 46
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 903
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 962
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            905,
+            907
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel"
+      }
+    },
+    {
+      "id": 612,
+      "type": "Reroute",
+      "pos": [
+        2695,
+        218
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 967
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            964
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 326,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -228,
+        229
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            960
+          ],
+          "shape": 3,
+          "label": "MODEL",
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            582,
+            585
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            877
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors"
+      ]
+    },
+    {
+      "id": 611,
+      "type": "Reroute",
+      "pos": [
+        572,
+        225
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 960
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            961,
+            967
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 571,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        1838,
+        274
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            903
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "RealESRGAN_x4.pth"
+      ]
+    },
+    {
+      "id": 549,
+      "type": "Reroute",
+      "pos": [
+        571,
+        270
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 877
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            970
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "VAE",
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 550,
+      "type": "Reroute",
+      "pos": [
+        1018,
+        270
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 970
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            881,
+            916,
+            971
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 575,
+      "type": "PreviewImage",
+      "pos": [
+        2483,
+        698
+      ],
+      "size": {
+        "0": 324.4793701171875,
+        "1": 349.8827819824219
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 907
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 618,
+      "type": "Reroute",
+      "pos": [
+        3222,
+        704
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 971
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            972
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 568,
+      "type": "VAEEncode",
+      "pos": [
+        2918,
+        530
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 899
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 916
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            895
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 572,
+      "type": "ImageScale",
+      "pos": [
+        2523,
+        455
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 905
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            899
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "bilinear",
+        1536,
+        1536,
+        "disabled"
+      ]
+    },
+    {
+      "id": 566,
+      "type": "SaveImage",
+      "pos": [
+        3725,
+        684
+      ],
+      "size": {
+        "0": 868.0108642578125,
+        "1": 936.9744873046875
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 896
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 581,
+      "type": "Note",
+      "pos": [
+        3724,
+        638
+      ],
+      "size": {
+        "0": 254.39215087890625,
+        "1": 74.81724548339844
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "The final image should be of a high-resolution, with improved quality!"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      582,
+      326,
+      1,
+      328,
+      0,
+      "CLIP"
+    ],
+    [
+      583,
+      328,
+      0,
+      325,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      584,
+      330,
+      0,
+      325,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      585,
+      326,
+      1,
+      330,
+      0,
+      "CLIP"
+    ],
+    [
+      586,
+      331,
+      0,
+      325,
+      3,
+      "LATENT"
+    ],
+    [
+      667,
+      325,
+      0,
+      332,
+      0,
+      "LATENT"
+    ],
+    [
+      877,
+      326,
+      2,
+      549,
+      0,
+      "*"
+    ],
+    [
+      881,
+      550,
+      0,
+      332,
+      1,
+      "VAE"
+    ],
+    [
+      882,
+      332,
+      0,
+      558,
+      0,
+      "IMAGE"
+    ],
+    [
+      895,
+      568,
+      0,
+      565,
+      3,
+      "LATENT"
+    ],
+    [
+      896,
+      567,
+      0,
+      566,
+      0,
+      "IMAGE"
+    ],
+    [
+      897,
+      565,
+      0,
+      567,
+      0,
+      "LATENT"
+    ],
+    [
+      899,
+      572,
+      0,
+      568,
+      0,
+      "IMAGE"
+    ],
+    [
+      903,
+      571,
+      0,
+      570,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      905,
+      570,
+      0,
+      572,
+      0,
+      "IMAGE"
+    ],
+    [
+      907,
+      570,
+      0,
+      575,
+      0,
+      "IMAGE"
+    ],
+    [
+      913,
+      328,
+      0,
+      565,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      914,
+      330,
+      0,
+      565,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      916,
+      550,
+      0,
+      568,
+      1,
+      "VAE"
+    ],
+    [
+      960,
+      326,
+      0,
+      611,
+      0,
+      "*"
+    ],
+    [
+      961,
+      611,
+      0,
+      325,
+      0,
+      "MODEL"
+    ],
+    [
+      962,
+      332,
+      0,
+      570,
+      1,
+      "IMAGE"
+    ],
+    [
+      964,
+      612,
+      0,
+      565,
+      0,
+      "MODEL"
+    ],
+    [
+      967,
+      611,
+      0,
+      612,
+      0,
+      "*"
+    ],
+    [
+      970,
+      549,
+      0,
+      550,
+      0,
+      "*"
+    ],
+    [
+      971,
+      550,
+      0,
+      618,
+      0,
+      "*"
+    ],
+    [
+      972,
+      618,
+      0,
+      567,
+      1,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Tutorial 3: Image Upscale",
+      "bounding": [
+        -246,
+        140,
+        2013,
+        784
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Introduction",
+      "bounding": [
+        -243,
+        -532,
+        447,
+        655
+      ],
+      "color": "#a1309b",
+      "font_size": 24
+    },
+    {
+      "title": "Upscale Image to Upscale Model",
+      "bounding": [
+        1822,
+        149,
+        1241,
+        929
+      ],
+      "color": "#A88",
+      "font_size": 24
+    },
+    {
+      "title": "Use \"Img to Img\" to enhance upscaled image with more detail",
+      "bounding": [
+        3113,
+        317,
+        1493,
+        1321
+      ],
+      "color": "#b06634",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

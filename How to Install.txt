@@ -22,6 +22,7 @@ Step 3: Install ComfyUI
 
 Step 4: Start ComfyUI
 - Click on the "Start" button next to ComfyUI in the Pinokio interface.
+- Click "Run"
 - Pinokio will now start ComfyUI. This process may take a while, so please be patient.
 - Once ComfyUI is ready, you will see a message in the Pinokio interface indicating that ComfyUI has started.
 

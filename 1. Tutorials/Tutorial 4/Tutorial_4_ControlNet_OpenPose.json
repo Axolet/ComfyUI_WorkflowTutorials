@@ -1,0 +1,1047 @@
+{
+  "last_node_id": 618,
+  "last_link_id": 955,
+  "nodes": [
+    {
+      "id": 541,
+      "type": "Note",
+      "pos": [
+        -224,
+        -508
+      ],
+      "size": {
+        "0": 393.8309326171875,
+        "1": 126.98263549804688
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "Tutorial 4",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "In this tutorial, we'll explore ControlNet and OpenPose, two powerful tools that allow you to guide the image generation process using additional input, such as poses. ControlNet is a neural network architecture that enables controllable image synthesis, while OpenPose is a library for real-time human pose estimation."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 609,
+      "type": "Note",
+      "pos": [
+        -220,
+        -329
+      ],
+      "size": {
+        "0": 391.610107421875,
+        "1": 106.3309555053711
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "title": "What is ControlNet?",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "ControlNet is an extension of Stable Diffusion that allows you to control the image generation process by providing additional input, such as edge maps, segmentation maps, or keypoints. It enables you to guide the model towards generating images that follow specific structural or compositional constraints."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 610,
+      "type": "Note",
+      "pos": [
+        -215,
+        -169
+      ],
+      "size": {
+        "0": 391.610107421875,
+        "1": 106.3309555053711
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "title": "What is OpenPose?",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "OpenPose is a real-time multi-person pose estimation library. It can detect and track human body, hand, and facial keypoints in images or videos. In the context of ComfyUI, OpenPose models can be used as a type of ControlNet to guide the image generation process based on human poses."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 600,
+      "type": "LoadImage",
+      "pos": [
+        -220,
+        193.84601177978521
+      ],
+      "size": {
+        "0": 315,
+        "1": 314.0000305175781
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            944
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "label": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "WomanPose.png",
+        "image"
+      ]
+    },
+    {
+      "id": 597,
+      "type": "CLIPTextEncode",
+      "pos": [
+        330,
+        833.8460117797854
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 930,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            937
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark, lowres, blurry, cropped, ugly"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 595,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -220,
+        573.8460117797854
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            925
+          ],
+          "shape": 3,
+          "label": "MODEL"
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            929,
+            930
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            932
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors"
+      ]
+    },
+    {
+      "id": 594,
+      "type": "KSampler",
+      "pos": [
+        1718,
+        598.8460117797854
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 925,
+          "label": "model",
+          "slot_index": 0
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 926,
+          "label": "positive"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 927,
+          "label": "negative"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 928,
+          "label": "latent_image",
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            931
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        959787624834133,
+        "randomize",
+        30,
+        6,
+        "dpmpp_sde",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 606,
+      "type": "OpenposePreprocessor",
+      "pos": [
+        237,
+        194.84601177978521
+      ],
+      "size": {
+        "0": 315,
+        "1": 150
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 944,
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            935,
+            947,
+            951
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        },
+        {
+          "name": "POSE_KEYPOINT",
+          "type": "POSE_KEYPOINT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenposePreprocessor"
+      },
+      "widgets_values": [
+        "enable",
+        "enable",
+        "enable",
+        1024
+      ]
+    },
+    {
+      "id": 612,
+      "type": "Note",
+      "pos": [
+        245,
+        159.84601177978521
+      ],
+      "size": {
+        "0": 263.3485412597656,
+        "1": 118.8861083984375
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "OpenPose Pose\n\n- Detects the hand, body pose and face.\n- Creates a skeleton pose image that can be read by the ControlNet."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 596,
+      "type": "CLIPTextEncode",
+      "pos": [
+        326,
+        579.8460117797854
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 929,
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            936
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a 2D digital art of Bruce Lee, smirking, Hong Kong city 1960 environment, ultra detailed, masterpiece, beautiful"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 608,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1034,
+        938.8460117797854
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 949,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 950,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            928
+          ],
+          "shape": 3,
+          "label": "LATENT",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1048,
+        1536,
+        4
+      ]
+    },
+    {
+      "id": 598,
+      "type": "VAEDecode",
+      "pos": [
+        2079,
+        599.8460117797854
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 931,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 932,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            933
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 604,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        1332,
+        706.8460117797854
+      ],
+      "size": {
+        "0": 315,
+        "1": 166
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 936,
+          "label": "positive"
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 937,
+          "label": "negative"
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 938,
+          "label": "control_net"
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 952,
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            926
+          ],
+          "shape": 3,
+          "label": "positive",
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            927
+          ],
+          "shape": 3,
+          "label": "negative",
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 554,
+      "type": "Note",
+      "pos": [
+        -220,
+        743.8460117797854
+      ],
+      "size": {
+        "0": 256.5917663574219,
+        "1": 81.17337799072266
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Missing Model?\n\nInstalll \"SDXL-controlnet: OpenPose (v2)\" from the manager!"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 603,
+      "type": "ControlNetLoader",
+      "pos": [
+        -220,
+        783.8460117797854
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            938
+          ],
+          "shape": 3,
+          "label": "CONTROL_NET",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "OpenPoseXL2.safetensors"
+      ]
+    },
+    {
+      "id": 614,
+      "type": "ImageScale",
+      "pos": [
+        943,
+        319
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 951
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 953,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 954,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            952
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        512,
+        512,
+        "disabled"
+      ]
+    },
+    {
+      "id": 613,
+      "type": "CM_NearestSDXLResolution",
+      "pos": [
+        706,
+        337
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 947
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            949,
+            953
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            950,
+            954
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CM_NearestSDXLResolution"
+      }
+    },
+    {
+      "id": 602,
+      "type": "PreviewImage",
+      "pos": [
+        1359,
+        198
+      ],
+      "size": {
+        "0": 215.62860107421875,
+        "1": 195.39141845703125
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 935,
+          "label": "images"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 616,
+      "type": "Note",
+      "pos": [
+        1333,
+        665
+      ],
+      "size": [
+        282.318603515625,
+        155.3300323486328
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "OpenPose Pose\nApply ControlNet\n\n- Strength: How much should the pose influence the final image\n\n- Start/End Percent: At which step of the image generation process should the controlnet be applied and/or stop applying."
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 599,
+      "type": "PreviewImage",
+      "pos": [
+        2323,
+        603
+      ],
+      "size": {
+        "0": 506.5728454589844,
+        "1": 464.4687194824219
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 933,
+          "label": "images"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 618,
+      "type": "Note",
+      "pos": [
+        689,
+        240
+      ],
+      "size": {
+        "0": 278.6070556640625,
+        "1": 140.11830139160156
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "title": "Tips",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Ensures that we get a consistent image resolution for both the ControlNet and Empty Latent Image\n"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      925,
+      595,
+      0,
+      594,
+      0,
+      "MODEL"
+    ],
+    [
+      926,
+      604,
+      0,
+      594,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      927,
+      604,
+      1,
+      594,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      928,
+      608,
+      0,
+      594,
+      3,
+      "LATENT"
+    ],
+    [
+      929,
+      595,
+      1,
+      596,
+      0,
+      "CLIP"
+    ],
+    [
+      930,
+      595,
+      1,
+      597,
+      0,
+      "CLIP"
+    ],
+    [
+      931,
+      594,
+      0,
+      598,
+      0,
+      "LATENT"
+    ],
+    [
+      932,
+      595,
+      2,
+      598,
+      1,
+      "VAE"
+    ],
+    [
+      933,
+      598,
+      0,
+      599,
+      0,
+      "IMAGE"
+    ],
+    [
+      935,
+      606,
+      0,
+      602,
+      0,
+      "IMAGE"
+    ],
+    [
+      936,
+      596,
+      0,
+      604,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      937,
+      597,
+      0,
+      604,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      938,
+      603,
+      0,
+      604,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      944,
+      600,
+      0,
+      606,
+      0,
+      "IMAGE"
+    ],
+    [
+      947,
+      606,
+      0,
+      613,
+      0,
+      "IMAGE"
+    ],
+    [
+      949,
+      613,
+      0,
+      608,
+      0,
+      "INT"
+    ],
+    [
+      950,
+      613,
+      1,
+      608,
+      1,
+      "INT"
+    ],
+    [
+      951,
+      606,
+      0,
+      614,
+      0,
+      "IMAGE"
+    ],
+    [
+      952,
+      614,
+      0,
+      604,
+      3,
+      "IMAGE"
+    ],
+    [
+      953,
+      613,
+      0,
+      614,
+      1,
+      "INT"
+    ],
+    [
+      954,
+      613,
+      1,
+      614,
+      2,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Tutorial 4: ControlNet Open Pose",
+      "bounding": [
+        -233,
+        86,
+        3067,
+        995
+      ],
+      "color": "#3f789e",
+      "font_size": 24
+    },
+    {
+      "title": "Introduction",
+      "bounding": [
+        -234,
+        -588,
+        444,
+        650
+      ],
+      "color": "#a1309b",
+      "font_size": 24
+    },
+    {
+      "title": "Adjust to Nearest Resolution",
+      "bounding": [
+        692,
+        252,
+        576,
+        215
+      ],
+      "color": "#b58b2a",
+      "font_size": 24
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
